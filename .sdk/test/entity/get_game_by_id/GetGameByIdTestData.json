@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "get_game_by_id": {
+      "GET_GAME_BY_ID00": {
+        "source": "s14",
+        "url": "s15"
+      },
+      "GET_GAME_BY_ID01": {
+        "source": "s28",
+        "url": "s29"
+      },
+      "GET_GAME_BY_ID02": {
+        "source": "s3c",
+        "url": "s3d"
+      }
+    }
+  },
+  "new": {
+    "get_game_by_id": {
+      "get_game_by_id_ref01": {
+        "source": "s50",
+        "url": "s51"
+      }
+    }
+  }
+}

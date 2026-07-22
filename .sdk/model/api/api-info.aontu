@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      contact: {
+        url: "https://fitgirlapi.onrender.com"
+      }
+      description: "This API serves as a robust backend for aggregating game data by merging metadata from Steam with download links from the FitGirl Repacks website. It provides endpoints to retrieve popular games and detailed information about specific titles."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://fitgirlapi.onrender.com/api/v1"
+        }
+      ]
+      summary: "This API serves as a robust backend for aggregating game data by merging metadata from Steam with download links from the FitGirl Repacks website."
+      title: "Game Data API"
+      version: "1.0.0"
+      website: "https://fitgirlapi.onrender.com"
+    }
+  }
+}
+

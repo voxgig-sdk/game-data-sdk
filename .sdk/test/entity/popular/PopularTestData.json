@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "popular": {
+      "POPULAR00": {
+        "header_image": "s32",
+        "id": "POPULAR00",
+        "name": "s34",
+        "popularity": "s35",
+        "release_date": "s36"
+      },
+      "POPULAR01": {
+        "header_image": "s64",
+        "id": "POPULAR01",
+        "name": "s66",
+        "popularity": "s67",
+        "release_date": "s68"
+      },
+      "POPULAR02": {
+        "header_image": "s96",
+        "id": "POPULAR02",
+        "name": "s98",
+        "popularity": "s99",
+        "release_date": "s9a"
+      }
+    }
+  },
+  "new": {
+    "popular": {
+      "popular_ref01": {
+        "header_image": "sc8",
+        "name": "sca",
+        "popularity": "scb",
+        "release_date": "scc"
+      }
+    }
+  }
+}

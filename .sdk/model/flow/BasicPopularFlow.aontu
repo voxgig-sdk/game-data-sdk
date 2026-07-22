@@ -1,0 +1,22 @@
+# BasicPopularFlow
+
+main: kit: flow: BasicPopularFlow:
+{
+  entity: "popular",
+  kind: "basic",
+  name: "BasicPopularFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "popular_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPopularFlow"
+}

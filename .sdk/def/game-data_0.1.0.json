@@ -1,0 +1,247 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Game Data API",
+    "description": "This API serves as a robust backend for aggregating game data by merging metadata from Steam with download links from the FitGirl Repacks website. It provides endpoints to retrieve popular games and detailed information about specific titles.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://fitgirlapi.onrender.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://fitgirlapi.onrender.com/api/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/popular": {
+      "get": {
+        "summary": "Get Popular Games",
+        "description": "Fetches the top 100 most popular games from SteamSpy and filters them against fitgirl database, ensuring only fully archived popular titles are returned.",
+        "operationId": "getPopularGames",
+        "tags": [
+          "Games"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved popular games",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameSummary"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "summary": "Get Game Details by Steam ID",
+        "description": "The core aggregator endpoint. Concurrently queries the Steam API for rich metadata while parsing JSON/Text files containing backed links from the official FitGirl website. Requires official Steam App IDs (find IDs on SteamDB).",
+        "operationId": "getGameById",
+        "tags": [
+          "Games"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The official Steam App ID. Find IDs on SteamDB.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "570"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved game details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GameSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Steam App ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Game title"
+          },
+          "popularity": {
+            "type": "integer",
+            "description": "Popularity rank from SteamSpy"
+          },
+          "headerImage": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to game header image"
+          },
+          "releaseDate": {
+            "type": "string",
+            "description": "Game release date"
+          }
+        }
+      },
+      "GameDetail": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Steam App ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Game title"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed game description from Steam"
+          },
+          "shortDescription": {
+            "type": "string",
+            "description": "Short game description"
+          },
+          "headerImage": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to game header image"
+          },
+          "screenshots": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "Array of screenshot URLs"
+          },
+          "developers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of game developers"
+          },
+          "publishers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of game publishers"
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Game genres"
+          },
+          "releaseDate": {
+            "type": "string",
+            "description": "Game release date"
+          },
+          "platforms": {
+            "type": "object",
+            "properties": {
+              "windows": {
+                "type": "boolean"
+              },
+              "mac": {
+                "type": "boolean"
+              },
+              "linux": {
+                "type": "boolean"
+              }
+            }
+          },
+          "downloadLinks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "Download source (e.g., FitGirl)"
+                }
+              }
+            },
+            "description": "Download links from FitGirl Repacks"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "code": {
+            "type": "integer",
+            "description": "Error code"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Games",
+      "description": "Operations for retrieving game data"
+    }
+  ]
+}

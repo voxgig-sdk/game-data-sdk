@@ -1,0 +1,22 @@
+# BasicGetGameByIdFlow
+
+main: kit: flow: BasicGetGameByIdFlow:
+{
+  entity: "get_game_by_id",
+  kind: "basic",
+  name: "BasicGetGameByIdFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "get_game_by_id_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetGameByIdFlow"
+}

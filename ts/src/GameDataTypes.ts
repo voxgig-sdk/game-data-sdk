@@ -1,0 +1,32 @@
+// Typed models for the GameData SDK.
+//
+// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+// params (op.<name>.points[].args.params[]). Field/param types come from the
+// canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+// @voxgig/apidef VALID_CANON). Do not edit by hand.
+
+export interface GetGameById {
+  source?: string
+  url?: string
+}
+
+export interface GetGameByIdListMatch {
+  id: string
+}
+
+export interface Popular {
+  header_image?: string
+  id?: string
+  name?: string
+  popularity?: number
+  release_date?: string
+}
+
+export interface PopularListMatch {
+  header_image?: string
+  id?: string
+  name?: string
+  popularity?: number
+  release_date?: string
+}
+
