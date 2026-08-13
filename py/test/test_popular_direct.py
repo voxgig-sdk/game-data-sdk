@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gamedata_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gamedata_sdk import GameDataSDK
-from core import helpers
+from gamedata_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _popular_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "GAMEDATA_TEST_POPULAR_ENTID": {},
-        "GAMEDATA_TEST_LIVE": "FALSE",
+        "GAME_DATA_TEST_POPULAR_ENTID": {},
+        "GAME_DATA_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("GAMEDATA_TEST_LIVE") == "TRUE"
+    live = env.get("GAME_DATA_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

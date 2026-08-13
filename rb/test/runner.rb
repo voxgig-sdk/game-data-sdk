@@ -23,8 +23,8 @@ module GameDataTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("GAMEDATA_TEST_LIVE")
-    override = getenv("GAMEDATA_TEST_OVERRIDE")
+    live = getenv("GAME_DATA_TEST_LIVE")
+    override = getenv("GAME_DATA_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module GameDataTestRunner
       end
     end
 
-    explain = getenv("GAMEDATA_TEST_EXPLAIN")
-    m["GAMEDATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("GAME_DATA_TEST_EXPLAIN")
+    m["GAME_DATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

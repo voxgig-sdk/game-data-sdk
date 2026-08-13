@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import GameDataControl
-from core.error import GameDataError
-from core.result import GameDataResult
-from core.spec import GameDataSpec
+from gamedata_sdk.config import make_config
+from gamedata_sdk.features import _make_feature
+from gamedata_sdk.core.control import GameDataControl
+from gamedata_sdk.core.error import GameDataError
+from gamedata_sdk.core.result import GameDataResult
+from gamedata_sdk.core.spec import GameDataSpec
 
 
 # True when this SDK was generated with the named feature.

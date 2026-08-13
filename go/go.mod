@@ -1,4 +1,4 @@
 module github.com/voxgig-sdk/game-data-sdk/go
 
-go 1.20
+go 1.21
 

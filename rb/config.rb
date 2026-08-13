@@ -63,6 +63,7 @@ module GameDataConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{id}",
                   "parts" => [
@@ -91,7 +92,7 @@ module GameDataConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "header_image",
+              "name" => "headerImage",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 0,
@@ -119,7 +120,7 @@ module GameDataConfig
             },
             {
               "active" => true,
-              "name" => "release_date",
+              "name" => "releaseDate",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 4,
@@ -134,6 +135,7 @@ module GameDataConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/popular",
                   "parts" => [

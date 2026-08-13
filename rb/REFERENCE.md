@@ -150,11 +150,11 @@ popular = client.Popular
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `header_image` | `String` | No |  |
+| `headerImage` | `String` | No |  |
 | `id` | `String` | No |  |
 | `name` | `String` | No |  |
 | `popularity` | `Integer` | No |  |
-| `release_date` | `String` | No |  |
+| `releaseDate` | `String` | No |  |
 
 ### Operations
 

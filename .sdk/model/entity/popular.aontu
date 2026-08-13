@@ -6,7 +6,7 @@ main: kit: entity: popular: {
 
   fields: [
     {
-      name: "header_image"
+      name: "headerImage"
       req: false
       type: "`$STRING`"
     }
@@ -26,7 +26,7 @@ main: kit: entity: popular: {
       type: "`$INTEGER`"
     }
     {
-      name: "release_date"
+      name: "releaseDate"
       req: false
       type: "`$STRING`"
     }

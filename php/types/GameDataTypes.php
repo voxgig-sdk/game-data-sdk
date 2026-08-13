@@ -28,20 +28,20 @@ class GetGameByIdListMatch
 /** Popular entity data model. */
 class Popular
 {
-    public ?string $header_image = null;
+    public ?string $headerImage = null;
     public ?string $id = null;
     public ?string $name = null;
     public ?int $popularity = null;
-    public ?string $release_date = null;
+    public ?string $releaseDate = null;
 }
 
 /** Request payload for Popular#list. */
 class PopularListMatch
 {
-    public ?string $header_image = null;
+    public ?string $headerImage = null;
     public ?string $id = null;
     public ?string $name = null;
     public ?int $popularity = null;
-    public ?string $release_date = null;
+    public ?string $releaseDate = null;
 }
 

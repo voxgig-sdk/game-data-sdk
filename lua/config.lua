@@ -62,6 +62,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{id}",
                 ["parts"] = {
@@ -90,7 +91,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "header_image",
+            ["name"] = "headerImage",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -118,7 +119,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "release_date",
+            ["name"] = "releaseDate",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
@@ -133,6 +134,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/popular",
                 ["parts"] = {

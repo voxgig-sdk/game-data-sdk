@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    getgamebyids = client.GetGameById().list()
+    getgamebyids = client.GetGameById().list({"id": "example"})
     for getgamebyid in getgamebyids:
         print(getgamebyid)
 except Exception as err:
@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = GameDataSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 getgamebyid = client.GetGameById().list()
 # getgamebyid contains the mock response record
 ```
@@ -221,7 +222,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -254,11 +255,11 @@ API path: `/{id}`
 
 | Field | Description |
 | --- | --- |
-| `header_image` |  |
+| `headerImage` |  |
 | `id` |  |
 | `name` |  |
 | `popularity` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 
 Operations: List.
 
@@ -289,7 +290,7 @@ Create an instance: `get_game_by_id = client.GetGameById()`
 #### Example: List
 
 ```python
-get_game_by_ids = client.GetGameById().list()
+get_game_by_ids = client.GetGameById().list({"id": "example"})
 ```
 
 
@@ -307,11 +308,11 @@ Create an instance: `popular = client.Popular()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `header_image` | `str` |  |
+| `headerImage` | `str` |  |
 | `id` | `str` |  |
 | `name` | `str` |  |
 | `popularity` | `int` |  |
-| `release_date` | `str` |  |
+| `releaseDate` | `str` |  |
 
 #### Example: List
 

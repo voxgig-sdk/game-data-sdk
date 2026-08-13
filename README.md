@@ -23,7 +23,7 @@ support (`list`):
 
 ```ts
 const client = new GameDataSDK()
-const items = await client.GetGameById().list()
+const items = await client.GetGameById().list({ id: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = GameDataSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = GameDataSDK.test({
+  entity: {
+    get_game_by_id: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const getgamebyids = await client.GetGameById().list()
-// getgamebyids is an array of bare GetGameById records populated with mock data
+// getgamebyids is an array of GetGameById entities, populated with mock data
+// — call getgamebyids[0].data() for the record itself
 console.log(getgamebyids)
 ```
 
@@ -110,8 +119,8 @@ import { GameDataSDK } from '@voxgig-sdk/game-data'
 
 const client = new GameDataSDK()
 
-// List all getgamebyids (returns GetGameById[])
-const getgamebyids = await client.GetGameById().list()
+// List all getgamebyids (returns GetGameByIdEntity[] — .data() for the record)
+const getgamebyids = await client.GetGameById().list({ id: "example" })
 for (const getgamebyid of getgamebyids) {
   console.log(getgamebyid)
 }
@@ -171,7 +180,7 @@ from gamedata_sdk import GameDataSDK
 client = GameDataSDK()
 
 # List all getgamebyids (returns a list, raises on error)
-getgamebyids = client.GetGameById().list()
+getgamebyids = client.GetGameById().list({"id": "example"})
 for getgamebyid in getgamebyids:
     print(getgamebyid)
 ```
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://fitgirlapi.onrender.com](https://fitgirlapi.onrender.com)
 

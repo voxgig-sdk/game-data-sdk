@@ -147,11 +147,11 @@ local popular = client:Popular(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `header_image` | `string` | No |  |
+| `headerImage` | `string` | No |  |
 | `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `popularity` | `number` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 
 ### Operations
 

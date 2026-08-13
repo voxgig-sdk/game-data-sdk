@@ -37,7 +37,7 @@ class PopularEntity extends GameDataEntityBase<Popular> {
 
 
 
-  async list(this: any, reqmatch?: PopularListMatch, ctrl?: Control): Promise<Popular[]> {
+  async list(this: any, reqmatch?: PopularListMatch, ctrl?: Control): Promise<PopularEntity[]> {
 
     const utility = this._utility
 

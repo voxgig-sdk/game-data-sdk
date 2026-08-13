@@ -68,6 +68,7 @@ class GameDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{id}',
                   'parts' => [
@@ -96,7 +97,7 @@ class GameDataConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'header_image',
+              'name' => 'headerImage',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 0,
@@ -124,7 +125,7 @@ class GameDataConfig
             ],
             [
               'active' => true,
-              'name' => 'release_date',
+              'name' => 'releaseDate',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 4,
@@ -139,6 +140,7 @@ class GameDataConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/popular',
                   'parts' => [

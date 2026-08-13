@@ -35,10 +35,12 @@ const client = new GameDataSDK()
 
 ### 2. List getgamebyid records
 
-`list()` resolves to an array of GetGameById objects — iterate it directly:
+`list()` resolves to an array of GetGameById ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
-const getgamebyids = await client.GetGameById().list()
+const getgamebyids = await client.GetGameById().list({ id: "example" })
 
 for (const getgamebyid of getgamebyids) {
   console.log(getgamebyid)
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = GameDataSDK.test()
 
 const getgamebyid = await client.GetGameById().list()
-// getgamebyid is a bare entity populated with mock response data
+// getgamebyid is the entity, populated with mock response data
+// — call getgamebyid.data() for the record itself
 console.log(getgamebyid)
 ```
 
@@ -296,11 +299,11 @@ API path: `/{id}`
 
 | Field | Description |
 | --- | --- |
-| `header_image` |  |
+| `headerImage` |  |
 | `id` |  |
 | `name` |  |
 | `popularity` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 
 Operations: list.
 
@@ -331,7 +334,7 @@ Create an instance: `const get_game_by_id = client.GetGameById()`
 #### Example: List
 
 ```ts
-const get_game_by_ids = await client.GetGameById().list()
+const get_game_by_ids = await client.GetGameById().list({ id: "example" })
 ```
 
 
@@ -349,11 +352,11 @@ Create an instance: `const popular = client.Popular()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `header_image` | `string` |  |
+| `headerImage` | `string` |  |
 | `id` | `string` |  |
 | `name` | `string` |  |
 | `popularity` | `number` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 
 #### Example: List
 

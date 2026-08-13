@@ -14,18 +14,18 @@
 ---@field id string
 
 ---@class Popular
----@field header_image? string
+---@field headerImage? string
 ---@field id? string
 ---@field name? string
 ---@field popularity? number
----@field release_date? string
+---@field releaseDate? string
 
 ---@class PopularListMatch
----@field header_image? string
+---@field headerImage? string
 ---@field id? string
 ---@field name? string
 ---@field popularity? number
----@field release_date? string
+---@field releaseDate? string
 
 local M = {}
 

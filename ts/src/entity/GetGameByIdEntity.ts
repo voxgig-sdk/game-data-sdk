@@ -37,7 +37,7 @@ class GetGameByIdEntity extends GameDataEntityBase<GetGameById> {
 
 
 
-  async list(this: any, reqmatch?: GetGameByIdListMatch, ctrl?: Control): Promise<GetGameById[]> {
+  async list(this: any, reqmatch?: GetGameByIdListMatch, ctrl?: Control): Promise<GetGameByIdEntity[]> {
 
     const utility = this._utility
 

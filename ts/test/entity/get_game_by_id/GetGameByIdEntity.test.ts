@@ -26,8 +26,8 @@ import {
 describe('GetGameByIdEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when GAMEDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('GAMEDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when GAME_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('GAME_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = GameDataSDK.test()
@@ -63,7 +63,7 @@ describe('GetGameByIdEntity', async () => {
     const get_game_by_id_ref01_ent = client.GetGameById()
     const get_game_by_id_ref01_match: any = {}
 
-    const get_game_by_id_ref01_list = await get_game_by_id_ref01_ent.list(get_game_by_id_ref01_match)
+    const get_game_by_id_ref01_list = (await get_game_by_id_ref01_ent.list(get_game_by_id_ref01_match)).map((e: any) => e.data())
 
 
   })

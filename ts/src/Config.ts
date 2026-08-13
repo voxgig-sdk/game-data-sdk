@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'GameData',
   }
 
 
@@ -94,6 +94,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/{id}",
               "parts": [
@@ -122,7 +123,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "header_image",
+          "name": "headerImage",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
@@ -150,7 +151,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "release_date",
+          "name": "releaseDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
@@ -165,6 +166,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/popular",
               "parts": [

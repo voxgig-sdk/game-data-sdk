@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = GameDataSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 getgamebyid = client.GetGameById.list()
 puts getgamebyid
 ```
@@ -248,11 +249,11 @@ API path: `/{id}`
 
 | Field | Description |
 | --- | --- |
-| `header_image` |  |
+| `headerImage` |  |
 | `id` |  |
 | `name` |  |
 | `popularity` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 
 Operations: List.
 
@@ -302,11 +303,11 @@ Create an instance: `popular = client.Popular`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `header_image` | `String` |  |
+| `headerImage` | `String` |  |
 | `id` | `String` |  |
 | `name` | `String` |  |
 | `popularity` | `Integer` |  |
-| `release_date` | `String` |  |
+| `releaseDate` | `String` |  |
 
 #### Example: List
 

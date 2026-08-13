@@ -219,9 +219,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local get_game_by_id, err = client:GetGameById():load()
+    local get_game_by_id, err = client:GetGameById():list()
     if err then error(err) end
-    -- get_game_by_id is the loaded record
+    -- get_game_by_id is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -243,11 +243,11 @@ API path: `/{id}`
 
 | Field | Description |
 | --- | --- |
-| `header_image` |  |
+| `headerImage` |  |
 | `id` |  |
 | `name` |  |
 | `popularity` |  |
-| `release_date` |  |
+| `releaseDate` |  |
 
 Operations: List.
 
@@ -296,11 +296,11 @@ Create an instance: `local popular = client:Popular(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `header_image` | `string` |  |
+| `headerImage` | `string` |  |
 | `id` | `string` |  |
 | `name` | `string` |  |
 | `popularity` | `number` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 
 #### Example: List
 

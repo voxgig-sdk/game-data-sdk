@@ -138,7 +138,7 @@ const get_game_by_id = client.GetGameById()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GetGameById().list()
+const results = await client.GetGameById().list({ id: "example" })
 ```
 
 ### Common Methods
@@ -179,11 +179,11 @@ const popular = client.Popular()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `header_image` | `string` | No |  |
+| `headerImage` | `string` | No |  |
 | `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `popularity` | `number` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 
 ### Operations
 

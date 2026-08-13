@@ -43,8 +43,8 @@ class GameDataTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('GAMEDATA_TEST_LIVE');
-        $override = self::getenv('GAMEDATA_TEST_OVERRIDE');
+        $live = self::getenv('GAME_DATA_TEST_LIVE');
+        $override = self::getenv('GAME_DATA_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class GameDataTestRunner
             }
         }
 
-        $explain = self::getenv('GAMEDATA_TEST_EXPLAIN');
+        $explain = self::getenv('GAME_DATA_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['GAMEDATA_TEST_EXPLAIN'] = $explain;
+            $m['GAME_DATA_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

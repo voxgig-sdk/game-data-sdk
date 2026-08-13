@@ -32,7 +32,7 @@ GetGameByIdListMatch = Struct.new(
 
 # Popular entity data model.
 #
-# @!attribute [rw] header_image
+# @!attribute [rw] headerImage
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -44,20 +44,20 @@ GetGameByIdListMatch = Struct.new(
 # @!attribute [rw] popularity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 Popular = Struct.new(
-  :header_image,
+  :headerImage,
   :id,
   :name,
   :popularity,
-  :release_date,
+  :releaseDate,
   keyword_init: true
 )
 
 # Request payload for Popular#list.
 #
-# @!attribute [rw] header_image
+# @!attribute [rw] headerImage
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -69,14 +69,14 @@ Popular = Struct.new(
 # @!attribute [rw] popularity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 PopularListMatch = Struct.new(
-  :header_image,
+  :headerImage,
   :id,
   :name,
   :popularity,
-  :release_date,
+  :releaseDate,
   keyword_init: true
 )
 

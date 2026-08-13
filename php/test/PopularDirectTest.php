@@ -66,11 +66,11 @@ function popular_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "GAMEDATA_TEST_POPULAR_ENTID" => [],
-        "GAMEDATA_TEST_LIVE" => "FALSE",
+        "GAME_DATA_TEST_POPULAR_ENTID" => [],
+        "GAME_DATA_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["GAMEDATA_TEST_LIVE"] === "TRUE";
+    $live = $env["GAME_DATA_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

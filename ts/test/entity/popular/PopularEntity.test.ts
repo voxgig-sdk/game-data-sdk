@@ -26,8 +26,8 @@ import {
 describe('PopularEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when GAMEDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('GAMEDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when GAME_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('GAME_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = GameDataSDK.test()
@@ -63,7 +63,7 @@ describe('PopularEntity', async () => {
     const popular_ref01_ent = client.Popular()
     const popular_ref01_match: any = {}
 
-    const popular_ref01_list = await popular_ref01_ent.list(popular_ref01_match)
+    const popular_ref01_list = (await popular_ref01_ent.list(popular_ref01_match)).map((e: any) => e.data())
 
 
   })

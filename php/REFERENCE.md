@@ -149,11 +149,11 @@ $popular = $client->Popular();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `header_image` | `string` | No |  |
+| `headerImage` | `string` | No |  |
 | `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `popularity` | `int` | No |  |
-| `release_date` | `string` | No |  |
+| `releaseDate` | `string` | No |  |
 
 ### Operations
 

@@ -272,11 +272,11 @@ API path: `/{id}`
 
 | Field | Description |
 | --- | --- |
-| `"header_image"` |  |
+| `"headerImage"` |  |
 | `"id"` |  |
 | `"name"` |  |
 | `"popularity"` |  |
-| `"release_date"` |  |
+| `"releaseDate"` |  |
 
 Operations: List.
 
@@ -329,11 +329,11 @@ Create an instance: `popular := client.Popular(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `header_image` | `string` |  |
+| `headerImage` | `string` |  |
 | `id` | `string` |  |
 | `name` | `string` |  |
 | `popularity` | `int` |  |
-| `release_date` | `string` |  |
+| `releaseDate` | `string` |  |
 
 #### Example: List
 

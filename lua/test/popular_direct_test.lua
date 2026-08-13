@@ -61,11 +61,11 @@ function popular_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["GAMEDATA_TEST_POPULAR_ENTID"] = {},
-    ["GAMEDATA_TEST_LIVE"] = "FALSE",
+    ["GAME_DATA_TEST_POPULAR_ENTID"] = {},
+    ["GAME_DATA_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["GAMEDATA_TEST_LIVE"] == "TRUE"
+  local live = env["GAME_DATA_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

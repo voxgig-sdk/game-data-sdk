@@ -15,18 +15,18 @@ export interface GetGameByIdListMatch {
 }
 
 export interface Popular {
-  header_image?: string
+  headerImage?: string
   id?: string
   name?: string
   popularity?: number
-  release_date?: string
+  releaseDate?: string
 }
 
 export interface PopularListMatch {
-  header_image?: string
+  headerImage?: string
   id?: string
   name?: string
   popularity?: number
-  release_date?: string
+  releaseDate?: string
 }
 

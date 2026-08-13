@@ -62,6 +62,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/{id}",
 								"parts": []any{
@@ -79,7 +80,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -90,7 +90,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "header_image",
+						"name": "headerImage",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
@@ -118,7 +118,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "release_date",
+						"name": "releaseDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 4,
@@ -133,6 +133,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/popular",
 								"parts": []any{
@@ -146,7 +147,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

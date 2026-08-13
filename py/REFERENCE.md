@@ -101,7 +101,7 @@ get_game_by_id = client.GetGameById()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.GetGameById().list()
+results = client.GetGameById().list({"id": "example"})
 for get_game_by_id in results:
     print(get_game_by_id)
 ```
@@ -145,11 +145,11 @@ popular = client.Popular()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `header_image` | `str` | No |  |
+| `headerImage` | `str` | No |  |
 | `id` | `str` | No |  |
 | `name` | `str` | No |  |
 | `popularity` | `int` | No |  |
-| `release_date` | `str` | No |  |
+| `releaseDate` | `str` | No |  |
 
 ### Operations
 
