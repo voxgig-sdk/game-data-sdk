@@ -40,7 +40,7 @@ class GameDataSDK
         $utility = new GameDataUtility();
         $this->_utility = $utility;
 
-        $config = GameDataConfig::make_config();
+        $config = GameDataConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

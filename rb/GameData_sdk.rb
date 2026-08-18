@@ -28,7 +28,7 @@ class GameDataSDK
     utility = GameDataUtility.new
     @_utility = utility
 
-    config = GameDataConfig.make_config
+    config = GameDataConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
