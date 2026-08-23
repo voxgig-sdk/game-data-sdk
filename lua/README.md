@@ -232,7 +232,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `source` |  |
+| `source` | Download source (e.g., FitGirl) |
 | `url` |  |
 
 Operations: List.
@@ -243,11 +243,11 @@ API path: `/{id}`
 
 | Field | Description |
 | --- | --- |
-| `headerImage` |  |
-| `id` |  |
-| `name` |  |
-| `popularity` |  |
-| `releaseDate` |  |
+| `headerImage` | URL to game header image |
+| `id` | Steam App ID |
+| `name` | Game title |
+| `popularity` | Popularity rank from SteamSpy |
+| `releaseDate` | Game release date |
 
 Operations: List.
 
@@ -272,7 +272,7 @@ Create an instance: `local get_game_by_id = client:GetGameById(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `source` | `string` |  |
+| `source` | `string` | Download source (e.g., FitGirl) |
 | `url` | `string` |  |
 
 #### Example: List
@@ -296,11 +296,11 @@ Create an instance: `local popular = client:Popular(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `headerImage` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `popularity` | `number` |  |
-| `releaseDate` | `string` |  |
+| `headerImage` | `string` | URL to game header image |
+| `id` | `string` | Steam App ID |
+| `name` | `string` | Game title |
+| `popularity` | `number` | Popularity rank from SteamSpy |
+| `releaseDate` | `string` | Game release date |
 
 #### Example: List
 

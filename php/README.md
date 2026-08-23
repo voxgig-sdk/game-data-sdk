@@ -248,7 +248,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `source` |  |
+| `source` | Download source (e.g., FitGirl) |
 | `url` |  |
 
 Operations: List.
@@ -259,11 +259,11 @@ API path: `/{id}`
 
 | Field | Description |
 | --- | --- |
-| `headerImage` |  |
-| `id` |  |
-| `name` |  |
-| `popularity` |  |
-| `releaseDate` |  |
+| `headerImage` | URL to game header image |
+| `id` | Steam App ID |
+| `name` | Game title |
+| `popularity` | Popularity rank from SteamSpy |
+| `releaseDate` | Game release date |
 
 Operations: List.
 
@@ -288,7 +288,7 @@ Create an instance: `$get_game_by_id = $client->GetGameById();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `source` | `string` |  |
+| `source` | `string` | Download source (e.g., FitGirl) |
 | `url` | `string` |  |
 
 #### Example: List
@@ -313,11 +313,11 @@ Create an instance: `$popular = $client->Popular();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `headerImage` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `popularity` | `int` |  |
-| `releaseDate` | `string` |  |
+| `headerImage` | `string` | URL to game header image |
+| `id` | `string` | Steam App ID |
+| `name` | `string` | Game title |
+| `popularity` | `int` | Popularity rank from SteamSpy |
+| `releaseDate` | `string` | Game release date |
 
 #### Example: List
 

@@ -8,6 +8,7 @@ main: kit: entity: get_game_by_id: {
     {
       name: "source"
       req: false
+      short: "Download source (e.g., FitGirl)"
       type: "`$STRING`"
     }
     {

@@ -244,7 +244,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `source` |  |
+| `source` | Download source (e.g., FitGirl) |
 | `url` |  |
 
 Operations: List.
@@ -255,11 +255,11 @@ API path: `/{id}`
 
 | Field | Description |
 | --- | --- |
-| `headerImage` |  |
-| `id` |  |
-| `name` |  |
-| `popularity` |  |
-| `releaseDate` |  |
+| `headerImage` | URL to game header image |
+| `id` | Steam App ID |
+| `name` | Game title |
+| `popularity` | Popularity rank from SteamSpy |
+| `releaseDate` | Game release date |
 
 Operations: List.
 
@@ -284,7 +284,7 @@ Create an instance: `get_game_by_id = client.GetGameById()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `source` | `str` |  |
+| `source` | `str` | Download source (e.g., FitGirl) |
 | `url` | `str` |  |
 
 #### Example: List
@@ -308,11 +308,11 @@ Create an instance: `popular = client.Popular()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `headerImage` | `str` |  |
-| `id` | `str` |  |
-| `name` | `str` |  |
-| `popularity` | `int` |  |
-| `releaseDate` | `str` |  |
+| `headerImage` | `str` | URL to game header image |
+| `id` | `str` | Steam App ID |
+| `name` | `str` | Game title |
+| `popularity` | `int` | Popularity rank from SteamSpy |
+| `releaseDate` | `str` | Game release date |
 
 #### Example: List
 

@@ -238,7 +238,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `source` |  |
+| `source` | Download source (e.g., FitGirl) |
 | `url` |  |
 
 Operations: List.
@@ -249,11 +249,11 @@ API path: `/{id}`
 
 | Field | Description |
 | --- | --- |
-| `headerImage` |  |
-| `id` |  |
-| `name` |  |
-| `popularity` |  |
-| `releaseDate` |  |
+| `headerImage` | URL to game header image |
+| `id` | Steam App ID |
+| `name` | Game title |
+| `popularity` | Popularity rank from SteamSpy |
+| `releaseDate` | Game release date |
 
 Operations: List.
 
@@ -278,7 +278,7 @@ Create an instance: `get_game_by_id = client.GetGameById`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `source` | `String` |  |
+| `source` | `String` | Download source (e.g., FitGirl) |
 | `url` | `String` |  |
 
 #### Example: List
@@ -303,11 +303,11 @@ Create an instance: `popular = client.Popular`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `headerImage` | `String` |  |
-| `id` | `String` |  |
-| `name` | `String` |  |
-| `popularity` | `Integer` |  |
-| `releaseDate` | `String` |  |
+| `headerImage` | `String` | URL to game header image |
+| `id` | `String` | Steam App ID |
+| `name` | `String` | Game title |
+| `popularity` | `Integer` | Popularity rank from SteamSpy |
+| `releaseDate` | `String` | Game release date |
 
 #### Example: List
 

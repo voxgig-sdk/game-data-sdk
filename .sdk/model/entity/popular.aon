@@ -8,26 +8,31 @@ main: kit: entity: popular: {
     {
       name: "headerImage"
       req: false
+      short: "URL to game header image"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "Steam App ID"
       type: "`$STRING`"
     }
     {
       name: "name"
       req: false
+      short: "Game title"
       type: "`$STRING`"
     }
     {
       name: "popularity"
       req: false
+      short: "Popularity rank from SteamSpy"
       type: "`$INTEGER`"
     }
     {
       name: "releaseDate"
       req: false
+      short: "Game release date"
       type: "`$STRING`"
     }
   ]

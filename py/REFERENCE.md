@@ -91,7 +91,7 @@ get_game_by_id = client.GetGameById()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `source` | `str` | No |  |
+| `source` | `str` | No | Download source (e.g., FitGirl) |
 | `url` | `str` | No |  |
 
 ### Operations
@@ -145,11 +145,11 @@ popular = client.Popular()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `headerImage` | `str` | No |  |
-| `id` | `str` | No |  |
-| `name` | `str` | No |  |
-| `popularity` | `int` | No |  |
-| `releaseDate` | `str` | No |  |
+| `headerImage` | `str` | No | URL to game header image |
+| `id` | `str` | No | Steam App ID |
+| `name` | `str` | No | Game title |
+| `popularity` | `int` | No | Popularity rank from SteamSpy |
+| `releaseDate` | `str` | No | Game release date |
 
 ### Operations
 

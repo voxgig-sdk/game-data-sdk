@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "GameData",
+            "slug": "game-data",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,6 +54,7 @@ def make_config():
         "fields": [
           {
             "name": "source",
+            "short": "Download source (e.g., FitGirl)",
             "type": "`$STRING`",
           },
           {
@@ -104,22 +108,27 @@ def make_config():
         "fields": [
           {
             "name": "headerImage",
+            "short": "URL to game header image",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "short": "Steam App ID",
             "type": "`$STRING`",
           },
           {
             "name": "name",
+            "short": "Game title",
             "type": "`$STRING`",
           },
           {
             "name": "popularity",
+            "short": "Popularity rank from SteamSpy",
             "type": "`$INTEGER`",
           },
           {
             "name": "releaseDate",
+            "short": "Game release date",
             "type": "`$STRING`",
           },
         ],

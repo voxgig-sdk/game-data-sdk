@@ -96,7 +96,7 @@ $get_game_by_id = $client->GetGameById();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `source` | `string` | No |  |
+| `source` | `string` | No | Download source (e.g., FitGirl) |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -149,11 +149,11 @@ $popular = $client->Popular();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `headerImage` | `string` | No |  |
-| `id` | `string` | No |  |
-| `name` | `string` | No |  |
-| `popularity` | `int` | No |  |
-| `releaseDate` | `string` | No |  |
+| `headerImage` | `string` | No | URL to game header image |
+| `id` | `string` | No | Steam App ID |
+| `name` | `string` | No | Game title |
+| `popularity` | `int` | No | Popularity rank from SteamSpy |
+| `releaseDate` | `string` | No | Game release date |
 
 ### Operations
 
