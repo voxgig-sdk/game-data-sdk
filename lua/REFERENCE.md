@@ -94,6 +94,7 @@ local get_game_by_id = client:GetGameById(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `source` | `string` | No | Download source (e.g., FitGirl) |
 | `url` | `string` | No |  |
 

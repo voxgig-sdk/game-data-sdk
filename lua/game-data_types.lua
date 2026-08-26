@@ -7,6 +7,7 @@
 -- edit by hand.
 
 ---@class GetGameById
+---@field id? string
 ---@field source? string
 ---@field url? string
 

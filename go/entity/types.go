@@ -14,6 +14,7 @@ import (
 
 // GetGameById is the typed data model for the get_game_by_id entity.
 type GetGameById struct {
+	Id *string `json:"id,omitempty"`
 	Source *string `json:"source,omitempty"`
 	Url *string `json:"url,omitempty"`
 }

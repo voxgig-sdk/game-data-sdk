@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -35,6 +36,10 @@ func MakeConfig() map[string]any {
 		"entity": map[string]any{
 			"get_game_by_id": map[string]any{
 				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
 					map[string]any{
 						"name": "source",
 						"short": "Download source (e.g., FitGirl)",

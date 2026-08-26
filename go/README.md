@@ -261,6 +261,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 | `"source"` | Download source (e.g., FitGirl) |
 | `"url"` |  |
 
@@ -301,6 +302,7 @@ Create an instance: `getGameById := client.GetGameById(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `source` | `string` | Download source (e.g., FitGirl) |
 | `url` | `string` |  |
 

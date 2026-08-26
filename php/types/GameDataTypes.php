@@ -15,6 +15,7 @@ declare(strict_types=1);
 /** GetGameById entity data model. */
 class GetGameById
 {
+    public ?string $id = null;
     public ?string $source = null;
     public ?string $url = null;
 }

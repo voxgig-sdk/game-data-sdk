@@ -102,6 +102,7 @@ fmt.Println(getGameById.GetName()) // "get_game_by_id"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `source` | `string` | No | Download source (e.g., FitGirl) |
 | `url` | `string` | No |  |
 

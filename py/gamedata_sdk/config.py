@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -52,6 +53,10 @@ def make_config():
         "entity": {
       "get_game_by_id": {
         "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
           {
             "name": "source",
             "short": "Download source (e.g., FitGirl)",

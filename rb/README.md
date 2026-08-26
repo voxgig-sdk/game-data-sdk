@@ -37,7 +37,7 @@ begin
   # list returns an Array of GetGameById records — iterate directly.
   getgamebyids = client.GetGameById.list
   getgamebyids.each do |item|
-    puts "#{item["source"]}"
+    puts "#{item["id"]} #{item["source"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -238,6 +238,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `source` | Download source (e.g., FitGirl) |
 | `url` |  |
 
@@ -278,6 +279,7 @@ Create an instance: `get_game_by_id = client.GetGameById`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `String` |  |
 | `source` | `String` | Download source (e.g., FitGirl) |
 | `url` | `String` |  |
 

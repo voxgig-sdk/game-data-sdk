@@ -43,7 +43,7 @@ local getgamebyids, err = client:GetGameById():list()
 if err then error(err) end
 
 for _, item in ipairs(getgamebyids) do
-  print(item["source"])
+  print(item["id"], item["source"])
 end
 ```
 
@@ -232,6 +232,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `source` | Download source (e.g., FitGirl) |
 | `url` |  |
 
@@ -272,6 +273,7 @@ Create an instance: `local get_game_by_id = client:GetGameById(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `source` | `string` | Download source (e.g., FitGirl) |
 | `url` | `string` |  |
 

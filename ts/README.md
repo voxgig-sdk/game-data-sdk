@@ -146,7 +146,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -288,6 +288,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `source` | Download source (e.g., FitGirl) |
 | `url` |  |
 
@@ -328,6 +329,7 @@ Create an instance: `const get_game_by_id = client.GetGameById()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `source` | `string` | Download source (e.g., FitGirl) |
 | `url` | `string` |  |
 

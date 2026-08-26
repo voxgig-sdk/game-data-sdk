@@ -17,6 +17,7 @@ from typing import TypedDict, Any
 
 
 class GetGameById(TypedDict, total=False):
+    id: str
     source: str
     url: str
 

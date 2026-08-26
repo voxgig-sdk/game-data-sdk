@@ -244,6 +244,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `source` | Download source (e.g., FitGirl) |
 | `url` |  |
 
@@ -284,6 +285,7 @@ Create an instance: `get_game_by_id = client.GetGameById()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `str` |  |
 | `source` | `str` | Download source (e.g., FitGirl) |
 | `url` | `str` |  |
 

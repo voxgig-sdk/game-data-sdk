@@ -10,12 +10,16 @@
 
 # GetGameById entity data model.
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] source
 #   @return [String, nil]
 #
 # @!attribute [rw] url
 #   @return [String, nil]
 GetGameById = Struct.new(
+  :id,
   :source,
   :url,
   keyword_init: true

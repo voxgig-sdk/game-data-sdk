@@ -38,7 +38,7 @@ try {
     // list() returns an array of GetGameById records — iterate directly.
     $getgamebyids = $client->GetGameById()->list();
     foreach ($getgamebyids as $item) {
-        echo $item["source"] . "\n";
+        echo $item["id"] . " " . $item["source"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -248,6 +248,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `source` | Download source (e.g., FitGirl) |
 | `url` |  |
 
@@ -288,6 +289,7 @@ Create an instance: `$get_game_by_id = $client->GetGameById();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `source` | `string` | Download source (e.g., FitGirl) |
 | `url` | `string` |  |
 

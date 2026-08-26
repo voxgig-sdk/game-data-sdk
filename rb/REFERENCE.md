@@ -97,6 +97,7 @@ get_game_by_id = client.GetGameById
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `String` | No |  |
 | `source` | `String` | No | Download source (e.g., FitGirl) |
 | `url` | `String` | No |  |
 

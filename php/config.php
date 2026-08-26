@@ -42,6 +42,7 @@ class GameDataConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -57,6 +58,10 @@ class GameDataConfig
             "entity" => [
         'get_game_by_id' => [
           'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
             [
               'name' => 'source',
               'short' => 'Download source (e.g., FitGirl)',

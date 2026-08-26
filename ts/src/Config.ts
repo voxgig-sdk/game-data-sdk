@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -68,6 +69,10 @@ class Config {
   entity = {
     "get_game_by_id": {
       "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        },
         {
           "name": "source",
           "short": "Download source (e.g., FitGirl)",

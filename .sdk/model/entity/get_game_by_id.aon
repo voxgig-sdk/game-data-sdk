@@ -6,6 +6,11 @@ main: kit: entity: get_game_by_id: {
 
   fields: [
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "source"
       req: false
       short: "Download source (e.g., FitGirl)"
@@ -17,6 +22,11 @@ main: kit: entity: get_game_by_id: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "get_game_by_id"
   op: {
