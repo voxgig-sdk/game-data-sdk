@@ -17,6 +17,7 @@ main: kit: entity: get_game_by_id: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       type: "`$STRING`"
@@ -48,8 +49,10 @@ main: kit: entity: get_game_by_id: {
           }
           method: "GET"
           orig: "/{id}"
-          parts: [
-            "{id}"
+          segments: [
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

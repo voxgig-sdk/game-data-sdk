@@ -42,9 +42,14 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "get_game_by_id",
         ["op"] = {
@@ -68,8 +73,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{id}",
-                ["parts"] = {
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -79,6 +86,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "{id}",
                 },
               },
             },
@@ -91,6 +101,7 @@ local function make_config()
       ["popular"] = {
         ["fields"] = {
           {
+            ["format"] = "uri",
             ["name"] = "headerImage",
             ["short"] = "URL to game header image",
             ["type"] = "`$STRING`",
@@ -116,6 +127,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "popular",
         ["op"] = {
           ["list"] = {
@@ -127,13 +142,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/popular",
-                ["parts"] = {
-                  "popular",
+                ["segments"] = {
+                  {
+                    ["lit"] = "popular",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "popular",
                 },
               },
             },

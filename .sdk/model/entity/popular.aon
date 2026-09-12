@@ -6,6 +6,7 @@ main: kit: entity: popular: {
 
   fields: [
     {
+      format: "uri"
       name: "headerImage"
       req: false
       short: "URL to game header image"
@@ -50,8 +51,10 @@ main: kit: entity: popular: {
         {
           method: "GET"
           orig: "/popular"
-          parts: [
-            "popular"
+          segments: [
+            {
+              lit: "popular"
+            }
           ]
           transform: {
             req: "`reqdata`"

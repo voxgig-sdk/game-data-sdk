@@ -54,10 +54,15 @@ module GameDataConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "get_game_by_id",
           "op" => {
             "list" => {
@@ -80,8 +85,10 @@ module GameDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{id}",
-                  "parts" => [
-                    "{id}",
+                  "segments" => [
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -92,6 +99,9 @@ module GameDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -103,6 +113,7 @@ module GameDataConfig
         "popular" => {
           "fields" => [
             {
+              "format" => "uri",
               "name" => "headerImage",
               "short" => "URL to game header image",
               "type" => "`$STRING`",
@@ -128,6 +139,10 @@ module GameDataConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "popular",
           "op" => {
             "list" => {
@@ -139,14 +154,19 @@ module GameDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/popular",
-                  "parts" => [
-                    "popular",
+                  "segments" => [
+                    {
+                      "lit" => "popular",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "popular",
+                  ],
                 },
               ],
             },
