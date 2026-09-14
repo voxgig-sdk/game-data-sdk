@@ -105,7 +105,7 @@ local results, err = client:GetGameById():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/game-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/game-data-sdk/releases) |
+| TypeScript | `@voxgig-sdk/game-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/game-data-sdk/releases) |
 | Python | `voxgig-sdk-game-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/game-data-sdk/releases) |
 | PHP | `voxgig-sdk/game-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/game-data-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/game-data-sdk/go` | `go get github.com/voxgig-sdk/game-data-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:GetGameById():list()
 ### TypeScript
 
 ```ts
-import { GameDataSDK } from '@voxgig-sdk/game-data'
+import { GameDataSDK } from '@voxgig-sdk/game-data-sdk'
 
 const client = new GameDataSDK()
 

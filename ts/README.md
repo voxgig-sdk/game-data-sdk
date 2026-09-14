@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { GameDataSDK } from '@voxgig-sdk/game-data'
+import { GameDataSDK } from '@voxgig-sdk/game-data-sdk'
 
 const client = new GameDataSDK()
 ```
@@ -449,7 +449,7 @@ game-data/
 Import the SDK from the package root:
 
 ```ts
-import { GameDataSDK } from '@voxgig-sdk/game-data'
+import { GameDataSDK } from '@voxgig-sdk/game-data-sdk'
 ```
 
 ### Entity state
