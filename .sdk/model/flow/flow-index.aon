@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicGetGameByIdFlow.aon"
-@"BasicPopularFlow.aon"
+@"./BasicGetGameByIdFlow.aon"
+@"./BasicPopularFlow.aon"

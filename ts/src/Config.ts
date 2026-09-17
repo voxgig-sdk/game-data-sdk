@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      get_game_by_id: {
-      },
-
-      popular: {
-      },
-
+        get_game_by_id: {
+        },
+  
+        popular: {
+        },
+  
     }
   }
 
