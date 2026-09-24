@@ -19,7 +19,6 @@ import type {
   GetGameByIdListMatch,
 } from '../GameDataTypes'
 
-// TODO: needs Entity superclass
 class GetGameByIdEntity extends GameDataEntityBase<GetGameById> {
 
   constructor(client: GameDataSDK, entopts: any) {

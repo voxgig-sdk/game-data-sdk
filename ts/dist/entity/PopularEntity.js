@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PopularEntity = void 0;
 const GameDataEntityBase_1 = require("../GameDataEntityBase");
-// TODO: needs Entity superclass
 class PopularEntity extends GameDataEntityBase_1.GameDataEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

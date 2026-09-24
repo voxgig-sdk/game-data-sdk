@@ -1,7 +1,7 @@
 // Typed models for the GameData SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,9 +14,6 @@ import (
 
 // GetGameById is the typed data model for the get_game_by_id entity.
 type GetGameById struct {
-	Id *string `json:"id,omitempty"`
-	Source *string `json:"source,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // GetGameByIdListMatch is the typed request payload for GetGameById.ListTyped.
@@ -26,11 +23,6 @@ type GetGameByIdListMatch struct {
 
 // Popular is the typed data model for the popular entity.
 type Popular struct {
-	HeaderImage *string `json:"headerImage,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Popularity *int `json:"popularity,omitempty"`
-	ReleaseDate *string `json:"releaseDate,omitempty"`
 }
 
 // PopularListMatch is the typed request payload for Popular.ListTyped.

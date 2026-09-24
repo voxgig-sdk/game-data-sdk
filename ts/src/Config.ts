@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -142,17 +135,20 @@ class Config {
       "fields": [
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "source",
-          "short": "Download source (e.g., FitGirl)",
-          "type": "`$STRING`"
+          "title": "Source",
+          "type": "`$STRING`",
+          "short": "Download source (e.g., FitGirl)"
         },
         {
-          "format": "uri",
           "name": "url",
-          "type": "`$STRING`"
+          "title": "Url",
+          "type": "`$STRING`",
+          "format": "uri"
         }
       ],
       "id": {
@@ -166,18 +162,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "example": "570",
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/{id}",
@@ -186,18 +170,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "570"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -209,30 +206,35 @@ class Config {
     "popular": {
       "fields": [
         {
-          "format": "uri",
           "name": "headerImage",
+          "title": "Header Image",
+          "type": "`$STRING`",
           "short": "URL to game header image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "id",
-          "short": "Steam App ID",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Steam App ID"
         },
         {
           "name": "name",
-          "short": "Game title",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Game title"
         },
         {
           "name": "popularity",
-          "short": "Popularity rank from SteamSpy",
-          "type": "`$INTEGER`"
+          "title": "Popularity",
+          "type": "`$INTEGER`",
+          "short": "Popularity rank from SteamSpy"
         },
         {
           "name": "releaseDate",
-          "short": "Game release date",
-          "type": "`$STRING`"
+          "title": "Release Date",
+          "type": "`$STRING`",
+          "short": "Game release date"
         }
       ],
       "id": {
@@ -246,7 +248,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/popular",
@@ -255,14 +256,16 @@ class Config {
                   "lit": "popular"
                 }
               ],
-              "select": {},
+              "parts": [
+                "popular"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "popular"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }

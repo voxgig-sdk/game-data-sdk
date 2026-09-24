@@ -1,0 +1,80 @@
+# Entity: popular
+
+main: kit: entity: popular: {
+
+  alias: field: {}
+
+  fields: {
+    headerImage: {
+      fo: "uri"
+      h: "Header Image"
+      n: "headerImage"
+      r: false
+      sh: "URL to game header image"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Steam App ID"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Game title"
+      t: "`$STRING`"
+    }
+    popularity: {
+      h: "Popularity"
+      n: "popularity"
+      r: false
+      sh: "Popularity rank from SteamSpy"
+      t: "`$INTEGER`"
+    }
+    releaseDate: {
+      h: "Release Date"
+      n: "releaseDate"
+      r: false
+      sh: "Game release date"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "popular"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /popular"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/popular"
+          s: [
+            {
+              lit: "popular"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

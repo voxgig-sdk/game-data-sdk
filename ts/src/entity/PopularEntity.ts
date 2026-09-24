@@ -19,7 +19,6 @@ import type {
   PopularListMatch,
 } from '../GameDataTypes'
 
-// TODO: needs Entity superclass
 class PopularEntity extends GameDataEntityBase<Popular> {
 
   constructor(client: GameDataSDK, entopts: any) {

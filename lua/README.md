@@ -43,7 +43,7 @@ local getgamebyids, err = client:GetGameById():list()
 if err then error(err) end
 
 for _, item in ipairs(getgamebyids) do
-  print(item["id"], item["source"])
+  print(item["id"])
 end
 ```
 

@@ -114,17 +114,20 @@ class GameDataConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'source',
-              'short' => 'Download source (e.g., FitGirl)',
+              'title' => 'Source',
               'type' => '`$STRING`',
+              'short' => 'Download source (e.g., FitGirl)',
             ],
             [
-              'format' => 'uri',
               'name' => 'url',
+              'title' => 'Url',
               'type' => '`$STRING`',
+              'format' => 'uri',
             ],
           ],
           'id' => [
@@ -138,18 +141,6 @@ class GameDataConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => '570',
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{id}',
@@ -158,17 +149,30 @@ class GameDataConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
+                  'parts' => [
+                    '{id}',
                   ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => '570',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -181,30 +185,35 @@ class GameDataConfig
         'popular' => [
           'fields' => [
             [
-              'format' => 'uri',
               'name' => 'headerImage',
-              'short' => 'URL to game header image',
+              'title' => 'Header Image',
               'type' => '`$STRING`',
+              'short' => 'URL to game header image',
+              'format' => 'uri',
             ],
             [
               'name' => 'id',
-              'short' => 'Steam App ID',
+              'title' => 'Id',
               'type' => '`$STRING`',
+              'short' => 'Steam App ID',
             ],
             [
               'name' => 'name',
-              'short' => 'Game title',
+              'title' => 'Name',
               'type' => '`$STRING`',
+              'short' => 'Game title',
             ],
             [
               'name' => 'popularity',
-              'short' => 'Popularity rank from SteamSpy',
+              'title' => 'Popularity',
               'type' => '`$INTEGER`',
+              'short' => 'Popularity rank from SteamSpy',
             ],
             [
               'name' => 'releaseDate',
-              'short' => 'Game release date',
+              'title' => 'Release Date',
               'type' => '`$STRING`',
+              'short' => 'Game release date',
             ],
           ],
           'id' => [
@@ -218,7 +227,6 @@ class GameDataConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/popular',
@@ -227,14 +235,16 @@ class GameDataConfig
                       'lit' => 'popular',
                     ],
                   ],
-                  'select' => [],
+                  'parts' => [
+                    'popular',
+                  ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'popular',
-                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
