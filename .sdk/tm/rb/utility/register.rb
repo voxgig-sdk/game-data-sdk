@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 GameDataUtility.registrar = ->(u) {
   u.clean = GameDataUtilities::Clean
+  u.clean_add = GameDataUtilities::CleanAdd
+  u.clean_explain = GameDataUtilities::CleanExplain
   u.done = GameDataUtilities::Done
   u.make_error = GameDataUtilities::MakeError
   u.feature_add = GameDataUtilities::FeatureAdd

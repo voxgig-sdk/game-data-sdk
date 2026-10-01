@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 GameDataUtility::setRegistrar(function (GameDataUtility $u): void {
     $u->clean = [GameDataClean::class, 'call'];
+    $u->clean_add = [GameDataClean::class, 'add'];
+    $u->clean_explain = [GameDataDone::class, 'clean_explain'];
     $u->done = [GameDataDone::class, 'call'];
     $u->make_error = [GameDataMakeError::class, 'call'];
     $u->feature_add = [GameDataFeatureAdd::class, 'call'];
