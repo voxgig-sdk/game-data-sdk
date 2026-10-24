@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { GameDataSDK, BaseFeature, stdutil } from '../../..'
+import { GameDataSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,17 +41,29 @@ describe('GetGameByIdEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = GameDataSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.GetGameById().list({"id":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GAME_DATA_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of []) {
       if (!live && maybeSkipControl(t, 'entityOp', 'get_game_by_id.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":0},"source":{"a":true,"h":"Source","n":"source","r":false,"sh":"Download source (e.g., FitGirl)","t":"`$STRING`","key$":"source","index$":1},"url":{"a":true,"fo":"uri","h":"Url","n":"url","r":false,"t":"`$STRING`","key$":"url","index$":2}},"id":{"field":"id","name":"id"},"name":"get_game_by_id","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"570","k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/{id}","q":{"exist":["id"]},"r":{},"s":[{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"get_game_by_id","name__orig":"get_game_by_id","Name":"GetGameById","name_":"get_game_by_id","name-":"get-game-by-id","NAME":"GET_GAME_BY_ID","index$":0}, {"active":true,"entity":"get_game_by_id","key$":"BasicGetGameByIdFlow","kind":"basic","name":"BasicGetGameByIdFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"get_game_by_id_ref01"}}],"index$":0}]}, 'GetGameById', {"GET /{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"The official Steam App ID. Find IDs on SteamDB.","schema":{"type":"string"},"example":"570","index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":0},"source":{"a":true,"h":"Source","n":"source","r":false,"sh":"Download source (e.g., FitGirl)","t":"`$STRING`","key$":"source","index$":1},"url":{"a":true,"fo":"uri","h":"Url","n":"url","r":false,"t":"`$STRING`","key$":"url","index$":2}},"id":{"field":"id","name":"id"},"name":"get_game_by_id","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"570","k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"get_game_by_id","name__orig":"get_game_by_id","Name":"GetGameById","name_":"get_game_by_id","name-":"get-game-by-id","NAME":"GET_GAME_BY_ID","index$":0}, {"active":true,"entity":"get_game_by_id","key$":"BasicGetGameByIdFlow","kind":"basic","name":"BasicGetGameByIdFlow","param":{},"step":[{"a":false,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"get_game_by_id_ref01"}}],"unreachable":true}]}, 'GetGameById', {"GET /{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"The official Steam App ID. Find IDs on SteamDB.","schema":{"type":"string"},"example":"570","index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -61,17 +73,16 @@ describe('GetGameByIdEntity', async () => {
 
     let get_game_by_id_ref01_data = Object.values(setup.data.existing.get_game_by_id)[0] as any
 
-    // LIST
-    const get_game_by_id_ref01_ent = client.GetGameById()
-    const get_game_by_id_ref01_match: any = {}
-
-    const get_game_by_id_ref01_list = (await get_game_by_id_ref01_ent.list(get_game_by_id_ref01_match)).map((e: any) => e.data())
-
-
   })
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

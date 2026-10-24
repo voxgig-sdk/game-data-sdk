@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // GameData SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class GameDataPrepareBody
 {
     public static function call(GameDataContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (GameDataMedia::isRawRequest($ctx->point)) {
+                return GameDataMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform

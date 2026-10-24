@@ -10,6 +10,12 @@ import (
 	"github.com/voxgig-sdk/game-data-sdk/go/core"
 )
 
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const get_game_by_idDirectLiveStrict = true
+
 func TestGetGameByIdDirect(t *testing.T) {
 	t.Run("direct-list-get_game_by_id", func(t *testing.T) {
 		setup := get_game_by_idDirectSetup([]any{
@@ -30,7 +36,7 @@ func TestGetGameByIdDirect(t *testing.T) {
 		if setup.live {
 			for _, _liveKey := range []string{"get_game_by_id01"} {
 				if v := setup.idmap[_liveKey]; v == nil {
-					t.Skipf("live test needs %s via *_ENTID env var (synthetic IDs only)", _liveKey)
+					liveMiss(t, get_game_by_idDirectLiveStrict, "Live test blocked: needs %s via GAME_DATA_TEST_GET_GAME_BY_ID_ENTID", _liveKey)
 					return
 				}
 			}
@@ -50,19 +56,14 @@ func TestGetGameByIdDirect(t *testing.T) {
 			"params": params,
 		})
 		if setup.live {
-			// Live-mode leniency is a model decision
-			// (main.kit.test.live.strict): synthetic IDs 4xx constantly
-			// against an arbitrary public API, so the default SKIPS here.
-			// A project that owns its test server sets strict and FAILS.
 			if err != nil {
-				t.Fatalf("list call failed (likely synthetic IDs against live API): %v", err)
+				liveMiss(t, get_game_by_idDirectLiveStrict, "Live list failed: %v", err)
 			}
-			if result["ok"] != true {
-				t.Fatalf("list call not ok (likely synthetic IDs against live API): %v", result)
+			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
+				liveMiss(t, get_game_by_idDirectLiveStrict, "Live list failed: %s", liveDescribe(result))
 			}
-			status := core.ToInt(result["status"])
-			if status < 200 || status >= 300 {
-				t.Fatalf("expected 2xx status, got %v", result["status"])
+			if _, ok := liveList(result["data"]); !ok {
+				liveMiss(t, get_game_by_idDirectLiveStrict, "Live list returned no list: %s", liveDescribe(result))
 			}
 		} else {
 			if err != nil {

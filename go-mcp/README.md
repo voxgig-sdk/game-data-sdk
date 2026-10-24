@@ -1,10 +1,14 @@
 # game-data-mcp
 
 [MCP](https://modelcontextprotocol.io) server exposing the GameData SDK as
-two agent tools — `game-data_list` and `game-data_load` — built on the
+1 agent tool, `game-data_list`, built on the
 [official Go MCP SDK](https://github.com/modelcontextprotocol/go-sdk) and the
 sibling Go SDK at `../go`. Runs over **stdio** (default, for spawnable installs)
 or **streamable HTTP** (one shared server for several agents).
+
+The server only reads. Create, update, patch and remove become tools too when the
+SDK's own model sets `main: kit: target: 'go-mcp': tool: write: true`; they are off by default, as an agent calling
+them changes the API's data.
 
 ## Examples
 
@@ -27,11 +31,7 @@ Tool-call arguments (what an agent sends):
 
 ```jsonc
 // game-data_list: first page of records
-{ "entity": "get_game_by_id" }
-{ "entity": "get_game_by_id", "query": { } }
-
-// game-data_load: one record by id
-{ "entity": "get_game_by_id", "query": { "id": 1 } }
+{ "entity": "get_game_by_id", "query": { "id": "example" } }
 ```
 
 > The rest of this guide follows the [Diátaxis](https://diataxis.fr) framework:
@@ -59,9 +59,9 @@ Tool-call arguments (what an agent sends):
      -- "$PWD"/dist/*/game-data-mcp -transport stdio
    ```
 
-4. **Restart Claude Code.** The `game-data_list` and `game-data_load` tools now appear
-   in new sessions. Ask the agent to *"list get_game_by_id using game-data"*
-   and it calls `game-data_list` with `{"entity":"get_game_by_id"}`.
+4. **Restart Claude Code.** The `game-data_list` tool now appear in new
+   sessions. Ask the agent to *"list get_game_by_id using game-data"*
+   and it calls `game-data_list` with `{"entity":"get_game_by_id","query":{"id":"example"}}`.
 
 ## How-to guides
 
@@ -88,20 +88,19 @@ default) spawns a fresh process per client.
 
 ### Call the `game-data_list` tool
 
-Args: `entity` (required), `query` (optional filter map). Returns the first
-page of records as JSON:
+Args: `entity` (required), `query` (optional: optional filter map; omit it for the first page).
+Returns the first page of records as JSON:
 
 ```jsonc
-{ "entity": "get_game_by_id" }
+{ "entity": "get_game_by_id", "query": { "id": "example" } }
 ```
 
-### Call the `game-data_load` tool
+### Turn on the write tools
 
-Args: `entity` (required), `query` = `{"id":N}` (required). Returns the single
-record as JSON:
+In the SDK's own model (`.sdk/model/sdk.aontu`), then regenerate:
 
-```jsonc
-{ "entity": "get_game_by_id", "query": { "id": 1 } }
+```
+main: kit: target: 'go-mcp': tool: write: true
 ```
 
 ### Cross-compile release binaries
@@ -115,25 +114,26 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 
 ### Tools
 
-| Tool | Args | Returns |
-|------|------|---------|
-| `game-data_list` | `entity` (required), `query` (optional map) | First page of records as JSON |
-| `game-data_load` | `entity` (required), `query` = `{id:N}` | Single record as JSON |
+| Tool | Args | Returns | MCP hints |
+|------|------|---------|-----------|
+| `game-data_list` | `entity`, `query` (optional map) | The first page of records as JSON | read-only |
 
 On error, a tool returns an MCP error result (`isError: true`) whose text is the
 failure message (e.g. unknown entity, or an API error).
 
-### `Args` schema
+### Entities
 
-Both tools take the same argument object:
+Each tool takes as its `entity` argument one of the entities that has its
+operation, of the 2 the SDK has:
 
-| Field | Type | Notes |
-|-------|------|-------|
-| `entity` | string | One of the 2 supported entities (see below). |
-| `query` | object | Optional match map. `{"id":N}` for load; omit or `{}` for list. |
+| Tool | Entities |
+|------|----------|
+| `game-data_list` | get_game_by_id, popular |
 
-JSON schemas are emitted by the SDK from the `Args` struct's `json` /
-`jsonschema` tags — no schema is hand-written.
+JSON schemas are emitted by the SDK from each tool's argument struct's
+`json` / `jsonschema` tags — no schema is hand-written. Each tool's
+`entity` is an `enum` of the entities in its row, so the server refuses
+any other before it runs a call.
 
 ### Transports & flags
 
@@ -148,12 +148,6 @@ JSON schemas are emitted by the SDK from the `Args` struct's `json` /
 |----------|---------|
 | `GAME_DATA_APIKEY` | API key sent with every request. |
 | `GAME_DATA_BASE` | Optional override of the API base URL. |
-
-### Entities
-
-The 2 entities valid as the `entity` argument:
-
-get_game_by_id | popular
 
 ### Smoke test via HTTP (raw JSON-RPC)
 
@@ -173,7 +167,7 @@ curl -sN -X POST http://localhost:18080 \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   -H "Mcp-Session-Id: $SESSION" \
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"game-data_load","arguments":{"entity":"get_game_by_id","query":{"id":1}}}}'
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"game-data_list","arguments":{"entity":"get_game_by_id","query":{"id":"example"}}}}'
 ```
 
 ## Explanation
@@ -181,9 +175,10 @@ curl -sN -X POST http://localhost:18080 \
 ### How tools map to the SDK
 
 `main.go` builds the SDK client (configured from the environment) and registers
-two tools. Each dispatches on the `entity` argument to the matching entity in
-the sibling Go SDK at `../go`, calls `List` or `Load`, unwraps the `Entity`
-wrappers to plain data, and returns it as pretty-printed JSON.
+one tool per operation the SDK's entities have. Each dispatches on the
+`entity` argument to the matching entity in the sibling Go SDK at `../go`,
+calls its operation, unwraps the `Entity` wrappers to plain data, and returns
+it as pretty-printed JSON.
 
 ### Why two transports
 
@@ -193,9 +188,10 @@ that many agents can share — handy for a long-lived deployment.
 
 ### Schema generation
 
-The input schema is derived from the `Args` Go struct's `json` / `jsonschema`
-tags at registration time, so the advertised tool schema can never drift from
-the code that consumes it.
+The input schema is derived from each tool's argument struct's `json` /
+`jsonschema` tags at registration time, so the advertised tool schema can
+never drift from the code that consumes it. The `entity` enum comes from the
+same list the tool is registered for.
 
 ## Generated by
 

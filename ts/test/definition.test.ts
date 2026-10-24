@@ -23,7 +23,12 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {
@@ -46,14 +51,14 @@ const PLAN: any[] = [
       ],
       "releaseDate": "x",
       "platforms": {
-        "linux": true,
+        "windows": true,
         "mac": true,
-        "windows": true
+        "linux": true
       },
       "downloadLinks": [
         {
-          "source": "x",
-          "url": "x"
+          "url": "x",
+          "source": "x"
         }
       ]
     },
@@ -68,7 +73,12 @@ const PLAN: any[] = [
     "args": [],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": [

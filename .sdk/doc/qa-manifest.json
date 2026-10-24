@@ -3,5 +3,19 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Download source (for example, FitGirl)",
+      "Game release date",
+      "Game title",
+      "Popularity rank from SteamSpy",
+      "Production server",
+      "Steam App ID",
+      "Successfully retrieved game details",
+      "Successfully retrieved popular games",
+      "This API serves as a robust backend for aggregating game data by merging metadata from Steam with download links from the FitGirl Repacks website. It provides endpoints to retrieve popular games and detailed information about specific titles.",
+      "URL to game header image"
+    ]
+  }
 }
